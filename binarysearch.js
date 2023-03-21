@@ -1,122 +1,73 @@
 
-function merge(first, last) {
-    let sortedArr = []
-        while (first.length && last.length){
-      if (left[0] < last[0]) {
-        sortedArr.push(first.shift())
-      } else {
-        sortedArr.push(last.shift())
+
+
+function merge(left, right) {
+  let exists = []
+      while (left.length && right.length){
+    if (left[0] < right[0]) {
+      exists.push(left.shift())
+    } else {
+      exists.push(right.shift())
+    }
+  }
+  return [...exists, ...left, ...right]
+}
+
+function mergeArrange(arr) {
+  if (arr.length <= 1) return arr
+  let middle = Math.floor(arr.length / 2)
+  let left = mergeArrange(arr.slice(0, mid))
+  let right = mergeArrange(arr.slice(middle))
+  return merge(left,right);  
+   console.log( merge(left, right));
+}
+let arr = [45,12,6,89,2,5];
+console.log(mergeArrange(arr));
+
+
+function binary(arr, target){
+  let leftIndex= 0;
+  let rightIndex = arr.length-1;
+  
+  while(leftIndex <= rightIndex){
+
+      let middle = Math.floor((leftIndex+rightIndex)/2);
+      if (arr[middle] === target){
+          return middle;
       }
-    }
-    return [...sortedArr, ...first, ...last]
+      else if(arr[middle]>target){
+          rightIndex = middle-1
+      }
+      else{
+          leftIndex=middle+1
+      }
   }
-
-function mergeSort(arr) {
-    if (arr.length <= 1) return arr
-    let mid = Math.floor(arr.length / 2)
-    let first= mergeSort(arr.slice(0, mid))
-    let last = mergeSort(arr.slice(mid))
-    return merge(first,last);  
-     console.log( merge(first, last));
-  }
-  let arr = [45,12,6,89,2,5];
-  console.log(mergeSort(arr));
-
-
-  function binary(arr, target){
-    let firstIndex= 0;
-    let lastIndex = arr.length-1;
-    
-    while(firstIndex <= lastIndex){
-
-        let middle = Math.floor((firstIndex+lasttIndex)/2);
-        if (arr[middle] === target){
-            return middle;
-        }
-        else if(arr[middle]>target){
-            lastIndex = middle-1
-        }
-        else{
-            firstIndex=middle+1
-        }
-    }
-    return null;
+  return null;
 }
 let num = arr;
 let target = 6;
 console.log(binary(num,target));
 
-
-
-function merge(first, last) {
-    let sortedArr1 = []
-        while (first.length && last.length){
-      if (first[0] > last[0]) {
-        sortedArr1.push(first.shift())
-      } else {
-        sortedArr1.push(last.shift())
-      }
+function merge(left, right) {
+  let sortedArr1 = []
+      while (left.length && right.length){
+    if (left[0] > right[0]) {
+      sortedArr1.push(left.shift())
+    } else {
+      sortedArr1.push(right.shift())
     }
-    return [...sortedArr1, ...first, ...last]
   }
-
-function mergeSort(arr) {
-    if (arr.length <= 1) return arr
-    let mid = Math.floor(arr.length / 2)
-    let first = mergeSort(arr.slice(0, mid))
-    let last = mergeSort(arr.slice(mid))
-    return merge(first,last);  
-     console.log( merge(first, last));
-  }
-  let arrs = [[123,89,5,23,9,56]];
-  console.log(mergeSort(arrs));
-
-
-
-function merge(first, last) {
-    let sortedArr2 = []
-        while (first.length && last.length){
-      if (first[0] < last[0]) {
-        sortedArr2.push(first.shift())
-      } else {
-        sortedArr2.push(first.shift())
-      }
-    }
-    return [...sortedArr2, ...first, ...last]
-  }
-
-function mergeSort(arr) {
-    if (arr.length <= 1) return arr
-    let mid = Math.floor(arr.length / 2)
-    let first = mergeSort(arr.slice(0, mid))
-    let last = mergeSort(arr.slice(mid))
-    return merge(first,last);  
-     console.log( merge(left, right));
-  }
-
-  let arr2 = [1,4,78,2,67,3];
-  console.log(mergeSort(arr2));
-
-
-
-  function binary(arr, target){
-    let firstIndex= 0;
-    let lastIndex = arr.length-1;
-    
-    while(firstIndex <= lastIndex){
-
-        let center = Math.floor((firstIndex+lasttIndex)/2);
-        if (arr[center] === target){
-            return center;
-        }
-        else if(arr[center]>target){
-            lastIndex = center-1
-        }
-        else{
-            firstIndex=center+1
-        }
-    }
-    return null;
+  return [...sortedArr1, ...left, ...right]
 }
-let targett = 34;
-console.log(binary(arr2,target));
+
+function mergeArrange(arr) {
+  if (arr.length <= 1) return arr
+  let mid = Math.floor(arr.length / 2)
+  let left = mergeArrange(arr.slice(0, mid))
+  let right = mergeArrange(arr.slice(mid))
+  return merge(left,right);  
+   console.log( merge(left, right));
+}
+let arrs = [[123,89,5,23,9,56]];
+console.log(mergeArrange(arrs));
+
